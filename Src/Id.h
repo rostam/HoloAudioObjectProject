@@ -1,4 +1,6 @@
-struct Id
-{
+namespace holoplot {
+  struct Id
+  {
     int id;
+  };
 };
