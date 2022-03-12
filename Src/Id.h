@@ -1,0 +1,4 @@
+struct Id
+{
+    int id;
+};
