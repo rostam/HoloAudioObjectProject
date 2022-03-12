@@ -19,6 +19,17 @@ namespace holoplot {
     audioObjects[audioObjectId.id] = AudioObject(audioObjectId, audiObjectPosition);
   }
 
+  /**
+   * @brief undo()
+   * 
+   * Undos the last action with an exception of ignoring several CHANGE_POSITION actions
+   * and gets back to the situation before the first change position. 
+   * 
+   * 
+   * (An important point here) The reason of second history.pop() is that not inroducing 
+   * new entries in the history stack by calling the actions again. 
+   * 
+   */
   void AudioObjectManager::undo() {
     
     AudioObjectAction audioObjectAction = history.top();

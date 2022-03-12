@@ -12,8 +12,9 @@ namespace holoplot{
     Id audioObjectId;
     Position position;
     
-    AudioObjectAction(Action action, Id audioObjectId) : action (action), audioObjectId (audioObjectId) {}
-    AudioObjectAction(Action action, AudioObject audioObject) : action (action), audioObject (audioObject) {}
-    AudioObjectAction(Action action, Id audioObjectId, Position position) : action (action), audioObjectId (audioObjectId), position (position) {}
+    AudioObjectAction(Action action, const Id& audioObjectId) : action (action), audioObjectId (audioObjectId) {}
+    AudioObjectAction(Action action, const AudioObject& audioObject) : action (action), audioObject (audioObject) {}
+    AudioObjectAction(Action action, const Id& audioObjectId, const Position& position) 
+      : action (action), audioObjectId (audioObjectId), position (position) {}
   };
 };

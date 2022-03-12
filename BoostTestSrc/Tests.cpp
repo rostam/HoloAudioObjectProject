@@ -11,16 +11,22 @@
 using namespace holoplot;
 
   
-  // std::ostream& operator<<(std::ostream& os, const Position& position) {
-  //     os << position.x << "," << position.y << "," << position.z;
-  //     return os;
-  // }
+  std::ostream& operator<<(std::ostream& os, const Position& position) {
+      os << position.x << "," << position.y << "," << position.z;
+      return os;
+  }
 
-  // bool operator== (Position position1, Position position2) {
-  //   return position1.x == position2.x && position1.y == position2.y && position1.z == position2.z;
-  // };
+  bool operator== (Position position1, Position position2) {
+    return position1.x == position2.x && position1.y == position2.y && position1.z == position2.z;
+  };
 
 BOOST_AUTO_TEST_SUITE(AudioObjectTest)
+    /**
+     * @brief Construct a new boost auto test case object
+     * 
+     * The test case here is the given one in the project description
+     * 
+     */
     BOOST_AUTO_TEST_CASE(AddTest) {
 
       Position A({1,1,1}); 
