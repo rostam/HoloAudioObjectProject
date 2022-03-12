@@ -13,12 +13,13 @@ namespace holoplot {
   class AudioObjectManager : public IAudioObjectManager
   {
     std::map<int, AudioObject> audioObjects;
-    std::stack<AudioObjectAction> history;
-
   public:
+      std::stack<AudioObjectAction> history;
+
     void add(const AudioObject &);
     void remove(const Id &);
     void changePosition(const Id &, const Position &);
+    AudioObject get(const Id &);
     void undo();
   };
 }

@@ -13,13 +13,17 @@ namespace holoplot {
   }
 
   void AudioObjectManager::changePosition(const Id &audioObjectId, const Position &audiObjectPosition) {
-    history.push(AudioObjectAction(AudioObjectAction::CHANGE_POSITION, audioObjects[audioObjectId.id]));
+    if(history.top().action != AudioObjectAction::CHANGE_POSITION) {
+      history.push(AudioObjectAction(AudioObjectAction::CHANGE_POSITION, audioObjectId, audioObjects[audioObjectId.id].position));
+    }
     audioObjects[audioObjectId.id] = AudioObject(audioObjectId, audiObjectPosition);
   }
 
   void AudioObjectManager::undo() {
+    
     AudioObjectAction audioObjectAction = history.top();
     history.pop();
+
     switch (audioObjectAction.action)
     {
     case AudioObjectAction::ADD:
@@ -34,10 +38,15 @@ namespace holoplot {
       this->changePosition(audioObjectAction.audioObjectId,audioObjectAction.position);
       break;
     
-    
     default:
       break;
     }
+    history.pop();
+
+  }
+
+  AudioObject AudioObjectManager::get(const Id& audioObjectId) {
+    return audioObjects[audioObjectId.id];
   }
 
 };
